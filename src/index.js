@@ -31,7 +31,6 @@ app.use(cookieParser());
 // REQUEST AND REQ METHOD/URL LOGGER
 app.use((req, res, next) => {
   logger.info(`Received ${req.method} from ${req.url}`);
-  console.log(req.body);
   next();
 });
 

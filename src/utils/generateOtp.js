@@ -4,7 +4,7 @@ import argon2 from 'argon2';
 const generateOtp = async (email) => {
   try {
     const code = Math.floor(100000 + Math.random() * 900000).toString();
-    const expiresAt = new Date(Date.now() + 5 * 60 * 1000); //  expires 5 mins from now
+    const expiresAt = new Date(Date.now() + 10 * 60 * 1000); //  expires 15 mins from now
 
     // Delete any existing OTPs for this email
     await OtpModel.deleteMany({ email });

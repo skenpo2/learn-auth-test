@@ -11,7 +11,7 @@ const generateJwtToken = async (user) => {
       },
     },
     config.ACCESS_TOKEN,
-    { expiresIn: '1h' }
+    { expiresIn: '15m' }
   );
 
   const refreshToken = crypto.randomBytes(40).toString('hex');
