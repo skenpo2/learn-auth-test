@@ -5,7 +5,6 @@ export const setPasswordService = async (body) => {
   const { email, password } = body;
   try {
     const user = await UserModel.findOne({ email });
-    console.log(user);
 
     if (!user) {
       throw new NotFoundException('User does not exist');

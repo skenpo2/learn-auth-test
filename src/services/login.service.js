@@ -1,11 +1,14 @@
 import UserModel from '../model/user.model.js';
 import AccountModel from '../model/account.model.js';
-import { UnauthorizedException, NotFoundException, BadRequestException } from '../utils/appError.js';
+import {
+  UnauthorizedException,
+  NotFoundException,
+  BadRequestException,
+} from '../utils/appError.js';
 import { AccountProviderEnum } from '../enums/account-provider.enum.js';
 
 export const loginUserService = async ({ email, password }) => {
   try {
-    console.log(email);
     const account = await AccountModel.findOne({
       provider: AccountProviderEnum.EMAIL,
       providerId: email,

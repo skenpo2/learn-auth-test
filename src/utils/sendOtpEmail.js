@@ -2,8 +2,6 @@ import generateOtp from './generateOtp.js';
 import sendMail from './mailer.js';
 
 export const sendOtpEmail = async (user) => {
-  console.log('send', user);
-
   const code = await generateOtp(user.email);
 
   const html = `

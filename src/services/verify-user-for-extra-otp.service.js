@@ -24,7 +24,6 @@ export const verifyUserForExtraOtpService = async (body) => {
     }
 
     const userWithoutPassword = user.omitPassword();
-    console.log(userWithoutPassword);
     return { user: userWithoutPassword };
   } catch (error) {
     throw error;

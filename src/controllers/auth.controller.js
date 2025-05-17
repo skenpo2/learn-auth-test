@@ -35,8 +35,6 @@ export const registerLearnerController = AsyncHandler(
     // call the register service. it take the verified body as argument
 
     const user = await registerLearnerService(body);
-    console.log('user here');
-    console.log(user);
 
     //  send OTP to user email
 
