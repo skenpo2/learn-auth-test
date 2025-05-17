@@ -14,6 +14,7 @@ import logger from './utils/logger.js';
 import errorHandler from './middlewares/errorHandler.middleware.js';
 
 const app = express();
+const PORT = config.PORT || 3001;
 
 //USE PASSPORT
 app.use(passport.initialize());
@@ -42,7 +43,7 @@ app.use('/api/user', userRoutes);
 app.use(errorHandler);
 
 // STARTING THE SERVER
-app.listen(config.PORT, () => {
+app.listen(PORT, () => {
   logger.info(`Server is listening on ${config.PORT} in ${config.NODE_ENV}`);
 });
 
