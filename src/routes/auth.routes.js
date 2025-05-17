@@ -12,6 +12,7 @@ import {
   forgotPasswordController,
   verifyForgotPasswordController,
   setPasswordController,
+  getExtraOtpController,
 } from '../controllers/auth.controller.js';
 import { HTTPSTATUS } from '../configs/http.config.js';
 
@@ -43,6 +44,8 @@ router.post(
   passport.authenticate('jwt', { session: false }),
   setPasswordController
 );
+
+router.post('/get-code', getExtraOtpController);
 
 router.get(
   '/current-user',

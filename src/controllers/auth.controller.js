@@ -23,6 +23,7 @@ import { verifyOtp } from '../utils/verifyOtp.js';
 import { verifyForgotPasswordService } from '../services/verify-forgot-password.service.js';
 import { setPasswordSchema } from '../validations/set-password.validations.js';
 import { setPasswordService } from '../services/set-password.service.js';
+import { verifyUserForExtraOtpService } from '../services/verify-user-for-extra-otp.service.js';
 
 // Regular registration controller
 export const registerLearnerController = AsyncHandler(
@@ -111,8 +112,6 @@ export const loginUserController = AsyncHandler(async (req, res, next) => {
 
   //Fetch & verify
   const { user } = await loginUserService(credentials);
-
-  console.log(user);
 
   //generate JWT
 
@@ -250,5 +249,18 @@ export const setPasswordController = AsyncHandler(async (req, res, next) => {
   return res.status(HTTPSTATUS.CREATED).json({
     success: true,
     message: 'Password set successfully',
+  });
+});
+
+export const getExtraOtpController = AsyncHandler(async (req, res, next) => {
+  const body = forgotPasswordSchema.parse({ ...req.body });
+
+  const user = await forgotPasswordService(body);
+
+  await sendOtpEmail(user);
+
+  return res.status(HTTPSTATUS.OK).json({
+    success: true,
+    message: ' OTP sent!, check you email',
   });
 });
